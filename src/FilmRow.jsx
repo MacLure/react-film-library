@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import Fave from './Fave'
 
 class FilmRow extends Component {
-  state = {  }
   render() { 
+
+    const handleDetailsClick = (film) => {
+      console.log(`Fetching details for ${film.title}!`)
+    }
 
     const film = this.props.data
 
     return (
-      <div className="film-row">
+      <div onClick={() => handleDetailsClick(film) }className="film-row">
         <figure className="film-poster">
           <img src={"https://image.tmdb.org/t/p/w780/" + film.poster_path} alt="" />
         </figure>
@@ -16,6 +20,7 @@ class FilmRow extends Component {
           <h1>{film.title}</h1>
           <p>{film.release_date}</p>
         </div>
+        <Fave />
       </div> 
     );
   }
